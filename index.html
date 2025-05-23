@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Ne Bola Tha - Chat Interface</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>Main Ne Bola Tha</h1>
+            <p>Your witty Hinglish AI friend!</p>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="message-content">
+                    <p>Namaste! Main Ne Bola Tha at your service! 🙏 Ask me for advice, predictions, or even a friendly roast!</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input">
+            <form id="messageForm">
+                <input type="text" id="userInput" placeholder="Type your message here..." autocomplete="off">
+                <button type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </form>
+        </div>
+
+        <div class="chat-suggestions">
+            <button class="suggestion-btn" data-text="Give me a prediction about tomorrow">Prediction</button>
+            <button class="suggestion-btn" data-text="I need some advice">Advice</button>
+            <button class="suggestion-btn" data-text="Roast me please">Roast</button>
+            <button class="suggestion-btn" data-text="Tell me a joke">Joke</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
