@@ -1,6 +1,6 @@
 # Main Ne Bola Tha (MNBT) WhatsApp Bot
 
-A fun, witty WhatsApp bot powered by OpenAI's GPT and Twilio's WhatsApp API. The bot responds in Hinglish with a signature catchphrase "Maine bola tha!" (I told you so!).
+A fun, witty WhatsApp bot powered by Hugging Face AI models and Twilio's WhatsApp API. The bot responds in Hinglish with a signature catchphrase "Maine bola tha!" (I told you so!).
 
 ## Features
 
@@ -12,7 +12,7 @@ A fun, witty WhatsApp bot powered by OpenAI's GPT and Twilio's WhatsApp API. The
 ## Prerequisites
 
 - Node.js (v14+)
-- OpenAI API key
+- Hugging Face API token
 - Twilio account with WhatsApp API access
 - ngrok or similar for local testing (optional)
 
