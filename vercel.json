@@ -16,6 +16,10 @@
       "dest": "index.js"
     },
     {
+      "src": "/env-check",
+      "dest": "index.js"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "index.js"
     },
