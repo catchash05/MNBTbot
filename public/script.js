@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             showTypingIndicator();
             
+            // Use relative URL which works both locally and on Vercel
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: {

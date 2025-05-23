@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 3000;
 // Configure middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
@@ -173,3 +174,50 @@ app.listen(PORT, () => {
   console.log(`WhatsApp webhook: http://localhost:${PORT}/webhook`);
   console.log('Maine bola tha it will work! 😎');
 });
+
+// API endpoint for the web interface chat
+app.post('/api/chat', async (req, res) => {
+  try {
+    // Get the message sent by the user
+    const incomingMessage = req.body.message || '';
+    
+    console.log(`Received message from web interface: ${incomingMessage}`);
+    
+    // Process the message based on commands or default to conversation
+    let responseText = '';
+    
+    // Check for command keywords
+    const lowerCaseMessage = incomingMessage.toLowerCase().trim();
+    
+    if (lowerCaseMessage.includes('prediction') || lowerCaseMessage.includes('predict')) {
+      responseText = await handlePredictionRequest(incomingMessage);
+    } else if (lowerCaseMessage.includes('advice') || lowerCaseMessage.includes('suggest')) {
+      responseText = await handleAdviceRequest(incomingMessage);
+    } else if (lowerCaseMessage.includes('roast') || lowerCaseMessage.includes('burn')) {
+      responseText = await handleRoastRequest(incomingMessage);
+    } else {
+      // Default conversation
+      responseText = await handleGeneralConversation(incomingMessage);
+    }
+    
+    // Send the response back as JSON
+    res.json({ message: responseText });
+    
+  } catch (error) {
+    console.error('Error processing message:', error);
+    res.status(500).json({ 
+      message: 'Arre yaar, something went wrong! Maine bola tha server maintenance karna chahiye! 😅' 
+    });
+  }
+});
+
+// Add CORS support for the API
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
+// Serve static files from the public directory
+app.use(express.static('public'));
